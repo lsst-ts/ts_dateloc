@@ -20,7 +20,7 @@ class DateProfile(object):
         ----------
         timestamp : float
             The UNIX timestamp for a given date/time.
-        location : lsst.ts.observatory.model.ObservatoryLocation
+        location : lsst.ts.dateloc.ObservatoryLocation
             The location site information instance.
         """
         self.location = location
@@ -52,11 +52,7 @@ class DateProfile(object):
 
     @property
     def lst_rad(self):
-        """Return the Local Sidereal Time (radians) for the internal timestamp.
-
-        Returns
-        -------
-        float
+        """float: Return the Local Sidereal Time (radians) for the internal timestamp.
         """
         value = palpy.gmst(self.mjd) + self.location.longitude_rad
         if value < 0.:
@@ -65,11 +61,7 @@ class DateProfile(object):
 
     @property
     def mjd(self):
-        """Return the Modified Julian Date for the internal timestamp.
-
-        Returns
-        -------
-        float
+        """float: Return the Modified Julian Date for the internal timestamp.
         """
         mjd = palpy.caldj(self.current_dt.year, self.current_dt.month, self.current_dt.day)
         mjd += (self.current_dt.hour / 24.0) + (self.current_dt.minute / 1440.) + \
@@ -90,7 +82,7 @@ class DateProfile(object):
         return self.__get_timestamp(midnight_dt)
 
     def previous_midnight_timestamp(self):
-        """float: Return the UNIX timestamp of midnight for the next day after current date.
+        """float: Return the UNIX timestamp of midnight for the next day before current date.
         """
         midnight_dt = datetime(self.current_dt.year, self.current_dt.month, self.current_dt.day)
         midnight_dt -= timedelta(**{"days": 1})
