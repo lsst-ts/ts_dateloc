@@ -42,6 +42,14 @@ class DateProfile(object):
         self.update(timestamp)
         return (self.mjd, self.lst_rad)
 
+    def __get_timestamp(self, dt):
+        """float: Return a timestamp from the datetime instance.
+        """
+        try:
+            return dt.timestamp()
+        except AttributeError:
+            return (dt - datetime(1970, 1, 1)).total_seconds()
+
     @property
     def lst_rad(self):
         """Return the Local Sidereal Time (radians) for the internal timestamp.
@@ -67,14 +75,6 @@ class DateProfile(object):
         mjd += (self.current_dt.hour / 24.0) + (self.current_dt.minute / 1440.) + \
                (self.current_dt.second / 86400.)
         return mjd
-
-    def __get_timestamp(self, dt):
-        """float: Return a timestamp from the datetime instance.
-        """
-        try:
-            return dt.timestamp()
-        except AttributeError:
-            return (dt - datetime(1970, 1, 1)).total_seconds()
 
     def midnight_timestamp(self):
         """float: Return the UNIX timestamp of midnight for the current date.
