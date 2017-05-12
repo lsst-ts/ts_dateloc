@@ -17,7 +17,7 @@ class DateProfileTest(unittest.TestCase):
         self.dp = DateProfile(LSST_START_TIMESTAMP, self.lsst_site)
 
     def test_basic_information_after_creation(self):
-        self.assertEquals(self.dp.timestamp, LSST_START_TIMESTAMP)
+        self.assertEqual(self.dp.timestamp, LSST_START_TIMESTAMP)
         self.assertIsNotNone(self.dp.location)
         self.assertIsNotNone(self.dp.current_dt)
         self.assertEqual(self.dp.mjd, LSST_START_MJD)
