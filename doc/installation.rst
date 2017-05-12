@@ -12,7 +12,7 @@ Now install the source code into your favorite location (called ``gitdir``) via:
 
 	git clone https://github.com/lsst-ts/ts_dateloc.git
 
-With the stack environment setup as instructed above, declare the packge to EUPS::
+With the stack environment setup as instructed above, declare the package to EUPS::
 
 	cd gitdir/ts_dateloc
 	eups declare ts_dateloc git -r . -c
