@@ -1,3 +1,4 @@
+from __future__ import division
 from datetime import datetime, timedelta
 import math
 
@@ -19,7 +20,7 @@ class DateProfile(object):
         Parameters
         ----------
         timestamp : float
-            The UNIX timestamp for a given date/time.
+            The UTC timestamp for a given date/time.
         location : lsst.ts.dateloc.ObservatoryLocation
             The location site information instance.
         """
@@ -32,7 +33,7 @@ class DateProfile(object):
         Parameters
         ----------
         timestamp : float
-            The UNIX timestamp to get the MJD and LST for.
+            The UTC timestamp to get the MJD and LST for.
 
         Returns
         -------
@@ -45,10 +46,7 @@ class DateProfile(object):
     def __get_timestamp(self, dt):
         """float: Return a timestamp from the datetime instance.
         """
-        try:
-            return dt.timestamp()
-        except AttributeError:
-            return (dt - datetime(1970, 1, 1)).total_seconds()
+        return (dt - datetime(1970, 1, 1)).total_seconds()
 
     @property
     def lst_rad(self):
@@ -69,20 +67,20 @@ class DateProfile(object):
         return mjd
 
     def midnight_timestamp(self):
-        """float: Return the UNIX timestamp of midnight for the current date.
+        """float: Return the UTC timestamp of midnight for the current date.
         """
         midnight_dt = datetime(self.current_dt.year, self.current_dt.month, self.current_dt.day)
         return self.__get_timestamp(midnight_dt)
 
     def next_midnight_timestamp(self):
-        """float: Return the UNIX timestamp of midnight for the next day after current date.
+        """float: Return the UTC timestamp of midnight for the next day after current date.
         """
         midnight_dt = datetime(self.current_dt.year, self.current_dt.month, self.current_dt.day)
         midnight_dt += timedelta(**{"days": 1})
         return self.__get_timestamp(midnight_dt)
 
     def previous_midnight_timestamp(self):
-        """float: Return the UNIX timestamp of midnight for the next day before current date.
+        """float: Return the UTC timestamp of midnight for the next day before current date.
         """
         midnight_dt = datetime(self.current_dt.year, self.current_dt.month, self.current_dt.day)
         midnight_dt -= timedelta(**{"days": 1})
@@ -94,7 +92,7 @@ class DateProfile(object):
         Parameters
         ----------
         timestamp : float
-            The UNIX timestamp to update the internal timestamp to.
+            The UTC timestamp to update the internal timestamp to.
         """
         self.timestamp = timestamp
         self.current_dt = datetime.utcfromtimestamp(self.timestamp)
