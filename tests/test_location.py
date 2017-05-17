@@ -55,6 +55,11 @@ class ObservatoryLocationTest(unittest.TestCase):
         self.assertEqual(location.longitude_rad, self.longitude_rad_truth)
         self.assertEqual(location.height, self.height_truth)
 
+    def test_get_configure_dict(self):
+        cd = ObservatoryLocation.get_configure_dict()
+        self.assertEqual(len(cd), 1)
+        self.assertEqual(len(cd["obs_site"]), 3)
+
 class MemoryTestClass(lsst.utils.tests.MemoryTestCase):
     pass
 

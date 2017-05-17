@@ -36,6 +36,25 @@ class ObservatoryLocation(object):
         self.latitude_rad = latitude_rad
         self.longitude_rad = longitude_rad
 
+    @classmethod
+    def get_configure_dict(cls):
+        """Get the configuration dictionary for the observatory location.
+
+        Returns
+        -------
+        dict
+            The configuration dictionary for the observatory location.
+        """
+        lsst = simsUtils.Site(name='LSST')
+        conf_dict = {
+            'obs_site': {
+                'latitude': lsst.latitude,
+                'longitude': lsst.longitude,
+                'height': lsst.height
+            }
+        }
+        return conf_dict
+
     @property
     def latitude(self):
         """float: Return the observatory's latitude in degrees.
