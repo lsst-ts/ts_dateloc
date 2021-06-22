@@ -33,11 +33,11 @@ class ObservatoryLocation(object):
 
     Attributes
     ----------
-    height : float
+    height : `float`
         The elevation of the observatory in meters.
-    latitude_rad : float
+    latitude_rad : `float`
         The latitude of the observatory in radians.
-    longitude_rad : float
+    longitude_rad : `float`
         The longitude of the observatory in radians.
     """
 
@@ -46,11 +46,11 @@ class ObservatoryLocation(object):
 
         Parameters
         ----------
-        latitude_rad : float
+        latitude_rad : `float`
             The latitude (radians) position of the observatory.
-        longitude_rad : float
+        longitude_rad : `float`
             The longitude (radians) position of the observatory.
-        height : float
+        height : `float`
             The elevation (meters) of the observatory.
         """
         self.height = height
@@ -63,7 +63,7 @@ class ObservatoryLocation(object):
 
         Returns
         -------
-        dict
+        `dict`
             The configuration dictionary for the observatory location.
         """
         lsst = simsUtils.Site(name="LSST")
@@ -78,12 +78,24 @@ class ObservatoryLocation(object):
 
     @property
     def latitude(self):
-        """float: Return the observatory's latitude in degrees."""
+        """Observatory latitude.
+
+        Returns
+        -------
+        `float`
+            Observatory latitude in degrees.
+        """
         return math.degrees(self.latitude_rad)
 
     @property
     def longitude(self):
-        """float: Return the observatory's longitude in degrees."""
+        """Observatory longitude.
+
+        Returns
+        -------
+        `float`
+            Observatory longitude in degrees.
+        """
         return math.degrees(self.longitude_rad)
 
     def configure(self, location_confdict):
@@ -100,7 +112,7 @@ class ObservatoryLocation(object):
 
         Parameters
         ----------
-        location_confdict : dict
+        location_confdict : `dict`
             The observatory information.
         """
         self.latitude_rad = math.radians(location_confdict["obs_site"]["latitude"])
@@ -119,11 +131,11 @@ class ObservatoryLocation(object):
 
         Parameters
         ----------
-        latitude_rad : float
+        latitude_rad : `float`
             The latitude (radians) position of the observatory.
-        longitude_rad : float
+        longitude_rad : `float`
             The longitude (radians) position of the observatory.
-        height : float
+        height : `float`
             The elevation (meters) of the observatory.
         """
         self.latitude_rad = latitude_rad

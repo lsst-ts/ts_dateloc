@@ -32,9 +32,9 @@ class DateProfile(object):
 
     Parameters
     ----------
-    timestamp : float
+    timestamp : `float`
         The UTC timestamp for a given date/time.
-    location : lsst.ts.dateloc.ObservatoryLocation
+    location : `lsst.ts.dateloc.ObservatoryLocation`
         The location site information instance.
     """
 
@@ -49,12 +49,12 @@ class DateProfile(object):
 
         Parameters
         ----------
-        timestamp : float
+        timestamp : `float`
             The UTC timestamp to get the MJD and LST for.
 
         Returns
         -------
-        (float, float)
+        (`float`, `float`)
             A tuple of the Modified Julian Date and Local Sidereal Time
             (radians).
         """
@@ -66,12 +66,12 @@ class DateProfile(object):
 
         Parameters
         ----------
-        dt : datetime
+        dt : `datetime`
             Date, in `datetime` format, to convert to timestamp.
 
         Returns
         -------
-        float
+        `float`
             Return a timestamp from the datetime instance.
         """
         return (dt - datetime(1970, 1, 1)).total_seconds()
@@ -82,7 +82,7 @@ class DateProfile(object):
 
         Returns
         -------
-        value : float
+        value : `float`
             Local Sidereal Time (radians) for the internal timestamp.
         """
         value = palpy.gmst(self.mjd) + self.location.longitude_rad
@@ -96,7 +96,7 @@ class DateProfile(object):
 
         Returns
         -------
-        mjd : float
+        mjd : `float`
             Modified Julian Date for the internal timestamp.
         """
         mjd = palpy.caldj(
@@ -114,7 +114,7 @@ class DateProfile(object):
 
         Returns
         -------
-        float
+        `float`
             The UTC timestamp of midnight for the current date.
         """
         midnight_dt = datetime(
@@ -127,7 +127,7 @@ class DateProfile(object):
 
         Returns
         -------
-        float
+        `float`
             UTC timestamp of midnight for the next day after current date.
         """
         midnight_dt = datetime(
@@ -141,7 +141,7 @@ class DateProfile(object):
 
         Returns
         -------
-        float
+        `float`
             UTC timestamp of midnight for the next day before current date.
         """
         midnight_dt = datetime(
@@ -155,7 +155,7 @@ class DateProfile(object):
 
         Parameters
         ----------
-        timestamp : float
+        timestamp : `float`
             The UTC timestamp to update the internal timestamp to.
         """
         self.timestamp = timestamp
