@@ -1,0 +1,2 @@
+@Library('JenkinsShared')_
+CondaPipeline([], "ts-dateloc", "lsst.ts.dateloc", "noarch")
