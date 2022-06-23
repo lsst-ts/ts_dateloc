@@ -18,8 +18,9 @@ test:
     - python
     - tests
     - setup.cfg
+    - pyproject.toml
   commands:
-    - py.test -vs
+    - py.test
 
 requirements:
   host:
