@@ -41,7 +41,7 @@ class DateProfileTest(unittest.TestCase):
         self.assertIsNotNone(self.dp.location)
         self.assertIsNotNone(self.dp.current_dt)
         self.assertEqual(self.dp.mjd, LSST_START_MJD)
-        self.assertEqual(self.dp.lst_rad, 0.5215154816963141)
+        self.assertAlmostEqual(self.dp.lst_rad, 0.5215154816963141)
 
     def test_update_mechanism(self):
         new_timestamp = LSST_START_TIMESTAMP + 3600.0
