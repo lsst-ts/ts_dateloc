@@ -13,8 +13,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys
 import os
+import sys
 
 # If extensions (or modules to document with autodoc) are in another
 # directory, add these directories to sys.path here. If the directory is
@@ -31,7 +31,7 @@ project_root = os.path.dirname(cwd)
 # version is used.
 sys.path.insert(0, project_root)
 
-import lsst.ts.dateloc
+import lsst.ts.dateloc  # noqa
 
 # -- General configuration ---------------------------------------------
 
@@ -60,14 +60,14 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = u"Date and Location"
-copyright = u"2017, LSST Telescope and Site"
+project = "Date and Location"
+copyright = "2017, LSST Telescope and Site"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
 # the built documents.
 #
-from lsst.ts.dateloc.version import __version__
+from lsst.ts.dateloc.version import __version__  # noqa
 
 # The short X.Y version.
 version = __version__
@@ -135,7 +135,7 @@ html_theme_options = {
 }
 
 # Add any paths that contain custom themes here, relative to this directory.@
-import sphinx_rtd_theme
+import sphinx_rtd_theme  # noqa
 
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
@@ -220,11 +220,11 @@ htmlhelp_basename = "ts_datelocdoc"
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
-    #'papersize': 'letterpaper',
+    # 'papersize': 'letterpaper',
     # The font size ('10pt', '11pt' or '12pt').
-    #'pointsize': '10pt',
+    # 'pointsize': '10pt',
     # Additional stuff for the LaTeX preamble.
-    #'preamble': '',
+    # 'preamble': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -234,8 +234,8 @@ latex_documents = [
     (
         "index",
         "ts_dateloc.tex",
-        u"Date and Location Documentation",
-        u"Francisco Delgado and Michael Reuter",
+        "Date and Location Documentation",
+        "Francisco Delgado and Michael Reuter",
         "manual",
     ),
 ]
@@ -269,8 +269,8 @@ man_pages = [
     (
         "index",
         "ts_dateloc",
-        u"Date and Location Documentation",
-        [u"Francisco Delgado and Michael Reuter"],
+        "Date and Location Documentation",
+        ["Francisco Delgado and Michael Reuter"],
         1,
     )
 ]
@@ -288,8 +288,8 @@ texinfo_documents = [
     (
         "index",
         "ts_dateloc",
-        u"Date and Location Documentation",
-        u"Francisco Delgado and Michael Reuter",
+        "Date and Location Documentation",
+        "Francisco Delgado and Michael Reuter",
         "ts_dateloc",
         "T&S Date and Location Information.",
         "Miscellaneous",
