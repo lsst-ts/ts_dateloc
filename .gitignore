@@ -54,3 +54,7 @@ config_*
 .sconsign.dblite
 *.tests
 ups/*.cfgc
+.pre-commit-config.yaml
+.flake8
+.isort.cfg
+.mypy.ini
