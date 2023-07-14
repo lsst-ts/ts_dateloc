@@ -19,9 +19,9 @@
 # You should have received a copy of the GNU General Public License
 
 import math
-import palpy
-
 from datetime import datetime, timedelta
+
+import palpy
 
 __all__ = ["DateProfile"]
 
