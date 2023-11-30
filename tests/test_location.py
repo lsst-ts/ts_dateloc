@@ -23,7 +23,7 @@ from __future__ import division
 import math
 import unittest
 
-import rubin_sim.utils as simsUtils
+import rubin_scheduler.utils as rs_utils
 from lsst.ts.dateloc import ObservatoryLocation
 
 
@@ -47,7 +47,7 @@ class ObservatoryLocationTest(unittest.TestCase):
     def test_information_after_lsst_configuration(self):
         location = ObservatoryLocation()
         location.for_lsst()
-        lsst = simsUtils.Site(name="LSST")
+        lsst = rs_utils.Site(name="LSST")
         self.assertAlmostEqual(location.latitude, lsst.latitude, places=4)
         self.assertEqual(location.longitude, lsst.longitude)
         self.assertEqual(location.height, lsst.height)
