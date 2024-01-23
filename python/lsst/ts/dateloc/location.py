@@ -20,7 +20,7 @@
 
 import math
 
-import rubin_sim.utils as simsUtils
+import rubin_scheduler.utils as rs_utils
 
 __all__ = ["ObservatoryLocation"]
 
@@ -66,7 +66,7 @@ class ObservatoryLocation(object):
         `dict`
             The configuration dictionary for the observatory location.
         """
-        lsst = simsUtils.Site(name="LSST")
+        lsst = rs_utils.Site(name="LSST")
         conf_dict = {
             "obs_site": {
                 "latitude": lsst.latitude,
@@ -121,7 +121,7 @@ class ObservatoryLocation(object):
 
     def for_lsst(self):
         """A convenience function to set the observatory location for LSST."""
-        lsst = simsUtils.Site(name="LSST")
+        lsst = rs_utils.Site(name="LSST")
         self.latitude_rad = math.radians(lsst.latitude)
         self.longitude_rad = math.radians(lsst.longitude)
         self.height = lsst.height
