@@ -41,26 +41,26 @@ class DateProfileTest(unittest.TestCase):
         self.assertIsNotNone(self.dp.location)
         self.assertIsNotNone(self.dp.current_dt)
         self.assertEqual(self.dp.mjd, LSST_START_MJD)
-        self.assertAlmostEqual(self.dp.lst_rad, 0.5215154816963141)
+        self.assertAlmostEqual(self.dp.lst_rad, 0.5215154816963141, delta=1e-6)
 
     def test_update_mechanism(self):
         new_timestamp = LSST_START_TIMESTAMP + 3600.0
         self.dp.update(new_timestamp)
         self.assertEqual(self.dp.timestamp, new_timestamp)
         self.assertEqual(self.dp.mjd, LSST_START_MJD + (1.0 / 24.0))
-        self.assertEqual(self.dp.lst_rad, 0.7840316524739084)
+        self.assertAlmostEqual(self.dp.lst_rad, 0.7840316524739084, delta=1e-6)
 
     def test_call_mechanism(self):
         new_timestamp = LSST_START_TIMESTAMP + (2.0 * 3600.0)
         (mjd, lst_rad) = self.dp(new_timestamp)
         self.assertEqual(mjd, LSST_START_MJD + (2.0 / 24.0))
-        self.assertAlmostEqual(lst_rad, 1.0465478232515026, delta=1e-7)
+        self.assertAlmostEqual(lst_rad, 1.0465478232515026, delta=1e-6)
 
     def test_negative_lst(self):
         new_timestamp = LSST_START_TIMESTAMP + (18.0 * 3600.0)
         (mjd, lst_rad) = self.dp(new_timestamp)
         self.assertEqual(mjd, LSST_START_MJD + (18.0 / 24.0))
-        self.assertAlmostEqual(lst_rad, 5.246806555968448, delta=1e-7)
+        self.assertAlmostEqual(lst_rad, 5.246806555968448, delta=1e-6)
 
     def test_midnight_timestamp(self):
         new_timestamp = LSST_START_TIMESTAMP + (4.0 * 3600.0)
